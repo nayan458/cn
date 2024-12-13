@@ -79,3 +79,56 @@ int main(int argc, char *argv[]) {
     close(sock);
     return 0;
 }
+
+// 1. Compile the Programs
+// Use gcc to compile both files. Run the following commands in your terminal:
+
+// bash
+// Copy code
+// gcc icmp_client.c -o icmp_client
+// gcc icmp_server.c -o icmp_server
+// This will create two executables: icmp_client and icmp_server.
+
+// 2. Run the Programs
+// Both programs require elevated privileges to use raw sockets. Use sudo to run them.
+
+// Start the server:
+
+// bash
+// Copy code
+// sudo ./icmp_server
+// The server listens for ICMP Echo Request packets and responds with Echo Replies.
+
+// Start the client:
+
+// bash
+// Copy code
+// sudo ./icmp_client <server_ip>
+// Replace <server_ip> with the actual IP address of the machine running the server.
+
+// 3. Open Wireshark
+// Start Wireshark and select the network interface used for communication between the client and server.
+// Apply a display filter to focus on ICMP packets:
+// Copy code
+// icmp
+// 4. Observe the Output
+// In the server terminal, you will see:
+
+// "Received ICMP Echo Request from <client_ip>".
+// "Sent ICMP Echo Reply to <client_ip>".
+// In the client terminal, you will see:
+
+// "Sent ICMP Echo Request to <server_ip>".
+// In Wireshark, you will observe:
+
+// ICMP Echo Request packets from the client to the server.
+// ICMP Echo Reply packets from the server to the client.
+// 5. Troubleshooting
+// If packets are not visible in Wireshark:
+
+// Ensure the firewall is not blocking ICMP traffic on both machines.
+// Ensure the client and server are running on the correct network interfaces.
+// If the programs fail to run:
+
+// Verify you have root permissions (use sudo).
+// Check that raw sockets are allowed on your system.
