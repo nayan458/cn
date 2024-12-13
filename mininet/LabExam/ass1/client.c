@@ -29,12 +29,12 @@ int main() {
         perror("Connection failed");
         return -1;
     }
-    printf("Enter roll number to delete: ");
+    printf("Delete Roll number: ");
     fgets(buffer, BUFFER_SIZE, stdin);
     buffer[strcspn(buffer, "\n")] = 0;
 
     send(sock, buffer, strlen(buffer), 0);
-    printf("Roll number sent to server\n");
+    printf("Sending...\n");
 
     close(sock);
 

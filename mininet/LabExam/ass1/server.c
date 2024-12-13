@@ -52,7 +52,7 @@ void delete_student(int roll_number) {
         }
      }
      if (found) {
-         printf("Deleted student with roll number %d\n", roll_number);
+         printf("Deleted student: %d\n", roll_number);
      } else {
          printf("Student with roll number %d not found\n", roll_number);
      }
