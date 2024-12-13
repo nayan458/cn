@@ -14,7 +14,7 @@ int sock; // Global socket for cleanup
 
 // Compute checksum for ICMP packet
 unsigned short checksum(void *b, int len) {
-    unsigned short *buf = b;
+    unsigned short *buf = (unsigned short *)b; // Explicit cast
     unsigned int sum = 0;
     unsigned short result;
 
@@ -29,6 +29,7 @@ unsigned short checksum(void *b, int len) {
     result = ~sum;
     return result;
 }
+
 
 void create_icmp_packet(char *packet, int sequence) {
     struct icmphdr *icmp = (struct icmphdr *)packet;
